@@ -1,0 +1,1 @@
+export const TESLA_API = "https://www.tesla.com/api/tesla/header/v1_1";
