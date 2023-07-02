@@ -4,8 +4,12 @@ import App from "./App.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Contact from "./components/Contact.jsx";
-import Hero from "./components/Hero.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import ModelSPage from "./pages/ModelSPage.jsx";
+import Model3Page from "./pages/Model3Page.jsx";
+import ModelXPage from "./pages/ModelXPage.jsx";
+import CybertruckPage from "./pages/CybertruckPage.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -13,14 +17,26 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '/',
-        element: <Hero />,
+        path: "/",
+        element: <HomePage />,
       },
       {
-        path: 'contact',
-        element: <Contact />,
-      }
-    ]
+        path: "/models",
+        element: <ModelSPage />,
+      },
+      {
+        path: "/model3",
+        element: <Model3Page />,
+      },
+      {
+        path: "/modelx",
+        element: <ModelXPage />,
+      },
+      {
+        path: "/cybertruck",
+        element: <CybertruckPage />,
+      },
+    ],
   },
 ]);
 

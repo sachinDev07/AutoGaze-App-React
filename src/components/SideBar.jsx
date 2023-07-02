@@ -20,7 +20,7 @@ const SideBar = ({ primaryMobileNavigationItems, isOpen, onClose }) => {
         </div>
         <ul className="mt-24">
           {primaryMobileNavigationItems?.map((item, index) => (
-            <Link key={index}>
+            <Link to={item?.href} key={index}>
               <li className="ml-10 hover:bg-slate-200 p-2 w-44 rounded-md text-black mb-5">
                 {item?.title}
               </li>

@@ -19,25 +19,6 @@ const Header = () => {
     fetchApi();
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const secondImageComponent = document.getElementById(
-        "second-image-component"
-      );
-      if (secondImageComponent) {
-        const rect = secondImageComponent.getBoundingClientRect();
-        const isComponentVisible =
-          rect.top >= 0 && rect.bottom <= window.innerHeight;
-        setIsSecondImageVisible(isComponentVisible);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const fetchApi = async () => {
     try {
       const response = await fetch(TESLA_API);
@@ -65,7 +46,7 @@ const Header = () => {
     >
       <nav className="hidden lg:block mt-4">
         <div className="flex justify-between items-center w-full">
-          <Link to="/homepage">
+          <Link to="/">
             <img className="w-24 h-14 cursor-pointer" src={logo} alt="logo" />
           </Link>
           <ul className="flex item-center gap-6 lg:gap-1 xl:gap-6">
