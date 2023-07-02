@@ -12,12 +12,30 @@ const Header = () => {
     useState([]);
   const [primaryMobileNavigationRightItems, setMobileNavigationRightItems] =
     useState([]);
-  const [primaryMobileNavigationItems, setMobileNavigationtItems] = useState(
-    []
-  );
+  const [primaryMobileNavigationItems, setMobileNavigationItems] = useState([]);
+  const [isSecondImageVisible, setIsSecondImageVisible] = useState(false);
 
   useEffect(() => {
     fetchApi();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const secondImageComponent = document.getElementById(
+        "second-image-component"
+      );
+      if (secondImageComponent) {
+        const rect = secondImageComponent.getBoundingClientRect();
+        const isComponentVisible =
+          rect.top >= 0 && rect.bottom <= window.innerHeight;
+        setIsSecondImageVisible(isComponentVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const fetchApi = async () => {
@@ -29,7 +47,7 @@ const Header = () => {
       setMobileNavigationRightItems(
         data.primaryMobileNavigationRightItems[0].title
       );
-      setMobileNavigationtItems(data.primaryMobileNavigationItems);
+      setMobileNavigationItems(data.primaryMobileNavigationItems);
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -40,15 +58,19 @@ const Header = () => {
   };
 
   return (
-    <header className="absolute top-0 left-0 right-0 md:px-9 px-4 bg-transparent text-white font-medium w-full z-50">
-      <nav className="hidden lg:block">
+    <header
+      className={`fixed top-0 left-0 right-0 md:px-9 px-4 bg-transparent ${
+        isSecondImageVisible ? "text-black" : "text-white"
+      } font-medium w-full z-50`}
+    >
+      <nav className="hidden lg:block mt-4">
         <div className="flex justify-between items-center w-full">
-          <Link to="/">
-            <img className="w-24 h-14 cursor-pointer " src={logo} alt="logo" />
+          <Link to="/homepage">
+            <img className="w-24 h-14 cursor-pointer" src={logo} alt="logo" />
           </Link>
           <ul className="flex item-center gap-6 lg:gap-1 xl:gap-6">
             {primaryNavigationItems.map((item, index) => (
-              <Link key={index}>
+              <Link to={item?.href} key={index}>
                 <li className="cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150">
                   {item?.title}
                 </li>
@@ -68,7 +90,7 @@ const Header = () => {
       </nav>
 
       <nav className="block lg:hidden">
-        <div className="flex items-center justify-between w-full ">
+        <div className="flex items-center justify-between w-full">
           <Link to="/">
             <img className="w-24 h-14 cursor-pointer" src={logo} alt="logo" />
           </Link>
