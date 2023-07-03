@@ -50,7 +50,7 @@ const Header = () => {
             <img className="w-24 h-14 cursor-pointer" src={logo} alt="logo" />
           </Link>
           <ul className="flex item-center gap-6 lg:gap-1 xl:gap-6">
-            {primaryNavigationItems.map((item, index) => (
+            {primaryNavigationItems?.slice(0, 4).map((item, index) => (
               <Link to={item?.href} key={index}>
                 <li className="cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150">
                   {item?.title}
