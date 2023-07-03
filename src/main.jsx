@@ -1,14 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import "./index.css";
 import HomePage from "./pages/HomePage.jsx";
 import ModelSPage from "./pages/ModelSPage.jsx";
 import Model3Page from "./pages/Model3Page.jsx";
 import ModelXPage from "./pages/ModelXPage.jsx";
-import CybertruckPage from "./pages/CybertruckPage.jsx";
+import ModelYPage from "./pages/ModelYPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         element: <ModelXPage />,
       },
       {
-        path: "/cybertruck",
-        element: <CybertruckPage />,
+        path: "/modely",
+        element: <ModelYPage />,
       },
     ],
   },
