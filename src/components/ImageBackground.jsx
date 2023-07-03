@@ -5,6 +5,7 @@ const ImageBackground = ({
   title,
   price,
   description,
+  features
 }) => {
   return (
     <div className={`relative z-0`}>
@@ -23,6 +24,18 @@ const ImageBackground = ({
             {description}
           </span>
         </div>
+      </div>
+
+      <div className="absolute top-[70%] left-1/2 transform -translate-x-1/2 flex text-white  gap-16 text-center">
+        {features.length &&
+          features.map((item) => (
+            <div key={item.title} className="flex flex-col">
+              <span className="text-3xl font-medium">{item.title}</span>
+              <span className="text-sm font-normal mt-2">
+                {item.description}
+              </span>
+            </div>
+          ))}
       </div>
 
       <div className="absolute inset-0 flex flex-col items-center top-[80%] md:top-[75%] lg:top-[80%] text-white text-xl md:text-3xl font-medium">
