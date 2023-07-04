@@ -4,16 +4,15 @@ import { Link } from "react-router-dom";
 import logo from "../assets/tesla-logo.png";
 import { TESLA_API } from "../utils/constant";
 import SideBar from "./SideBar";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [primaryNavigationItems, setPrimaryNavigationItems] = useState([]);
-  const [primaryNavigationRightItems, setPrimaryNavigationRightItems] =
-    useState([]);
-  const [primaryMobileNavigationRightItems, setMobileNavigationRightItems] =
-    useState([]);
+  const [primaryMobileNavigationRightItems, setMobileNavigationRightItems] = useState([]);
   const [primaryMobileNavigationItems, setMobileNavigationItems] = useState([]);
-  const [isSecondImageVisible, setIsSecondImageVisible] = useState(false);
+
+  const cartItems = useSelector( store => store.cart.items);
 
   useEffect(() => {
     fetchApi();
@@ -24,7 +23,6 @@ const Header = () => {
       const response = await fetch(TESLA_API);
       const data = await response.json();
       setPrimaryNavigationItems(data.primaryNavigationItems);
-      setPrimaryNavigationRightItems(data.primaryNavigationRightItems);
       setMobileNavigationRightItems(
         data.primaryMobileNavigationRightItems[0].title
       );
@@ -40,9 +38,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 md:px-9 px-4 bg-transparent ${
-        isSecondImageVisible ? "text-black" : "text-white"
-      } font-medium w-full z-50`}
+      className={`fixed top-0 left-0 right-0 md:px-9 px-4 bg-transparent text-white font-medium w-full z-50`}
     >
       <nav className="hidden lg:block mt-4">
         <div className="flex justify-between items-center w-full">
@@ -58,14 +54,19 @@ const Header = () => {
               </Link>
             ))}
           </ul>
+
           <ul className="flex items-center gap-6 lg:gap-1 xl:gap-6">
-            {primaryNavigationRightItems.map((item, index) => (
-              <Link key={index}>
-                <li className="cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150">
-                  {item?.title}
-                </li>
-              </Link>
-            ))}
+            <Link to="/cart">
+              <li className=" relative cursor-pointer py-1 px-2 rounded transition-all ease-in delay-150">
+                <i className="fa-solid fa-cart-shopping "></i>
+                <span className="block absolute top-0 right-0 bg-red-500 px-[3px] py-[0px] rounded-md text-[14px] text-white ">{cartItems.length}</span>
+              </li>
+            </Link>
+            <Link to="/shop">
+              <li className="cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150">
+                Shop
+              </li>
+            </Link>
           </ul>
         </div>
       </nav>
