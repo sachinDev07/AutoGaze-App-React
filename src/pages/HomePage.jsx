@@ -9,22 +9,30 @@ import { MAIN_HERO_DESKTOP } from "../utils/constant";
 const HomePage = () => {
   return (
     <>
-      <VideoBackground videoSource={MAIN_HERO_DESKTOP} title="Experience Tesla" description="Schedule a Demo Drive Today" />
+      <VideoBackground
+        videoSource={MAIN_HERO_DESKTOP}
+        title="Experience Tesla"
+        description="Schedule a Demo Drive Today"
+        features={0}
+      />
       <ImageBackground
         backgroundImage={Model3_image}
         title="Model 3"
         price="Starting at $32,740"
         description="After Federal Tax Credit"
+        features={0}
       />
       <ImageBackground
         backgroundImage={ModelY_image}
         title="Model Y"
         description="Explore Inventory"
+        features={0}
       />
       <ImageBackground
         backgroundImage={ModelX_image}
         title="Model X"
         description="Explore Inventory"
+        features={0}
       />
     </>
   );
