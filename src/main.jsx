@@ -9,6 +9,8 @@ import ModelSPage from "./pages/ModelSPage.jsx";
 import Model3Page from "./pages/Model3Page.jsx";
 import ModelXPage from "./pages/ModelXPage.jsx";
 import ModelYPage from "./pages/ModelYPage.jsx";
+import ShopPage from "./pages/ShopPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: "/modely",
         element: <ModelYPage />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
   },
