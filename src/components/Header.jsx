@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import logo from "../assets/tesla-logo.png";
 import { TESLA_API } from "../utils/constant";
@@ -17,6 +18,8 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   const location = useLocation();
+
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
   useEffect(() => {
     fetchApi();
@@ -74,6 +77,7 @@ const Header = () => {
           </ul>
 
           <ul className="flex items-center gap-6 lg:gap-1 xl:gap-6">
+            {isAuthenticated && <li className="text-white">{user.name}</li>}
             <Link to="/cart">
               <li className=" relative cursor-pointer py-1 px-2 rounded transition-all ease-in delay-150">
                 <i
@@ -95,6 +99,25 @@ const Header = () => {
                 Shop
               </li>
             </Link>
+            {isAuthenticated ? (
+              <li>
+                <button
+                  className="text-white bg-blue-700 p-2 rounded-md hover:bg-blue-500"
+                  onClick={() => logout({ returnTo: window.location.origin })}
+                >
+                  Log Out
+                </button>
+              </li>
+            ) : (
+              <li>
+                <button
+                  className="text-white bg-blue-700 p-2 rounded-md hover:bg-blue-500"
+                  onClick={() => loginWithRedirect()}
+                >
+                  Log In
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
