@@ -9,13 +9,12 @@ const CartPage = () => {
 
   function getSubTotal() {
     const subTotal = cartItems.reduce((total, item) => {
-        const itemSubTotal = item.price * item.quantity;
-        return total + itemSubTotal;
+      const itemSubTotal = item.price * item.quantity;
+      return total + itemSubTotal;
     }, 0);
-      
-    return subTotal / 100;
-}
 
+    return subTotal / 100;
+  }
 
   return cartItems.length === 0 ? (
     <div className="flex flex-col items-center justify-center w-full h-screen">
@@ -93,9 +92,11 @@ const CartPage = () => {
             <span className="text-xl font-medium">Subtotal</span>
             <span className="text-xl font-medium">{getSubTotal()}</span>
           </div>
-          <button className="flex items-center justify-center w-full  mt-7 bg-green-500 hover:bg-green-600 transition-colors duration-300 py-2 rounded-md text-white text-lg">
-            Checkout
-          </button>
+          <Link to='/thankyou'>
+            <button className="flex items-center justify-center w-full  mt-7 bg-green-500 hover:bg-green-600 transition-colors duration-300 py-2 rounded-md text-white text-lg">
+              Checkout
+            </button>
+          </Link>
         </div>
       </div>
     </div>
