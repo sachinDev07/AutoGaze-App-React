@@ -12,7 +12,7 @@ import ModelXPage from "./pages/ModelXPage.jsx";
 import ModelYPage from "./pages/ModelYPage.jsx";
 import ShopPage from "./pages/ShopPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
-
+import ThankYouPage from "./components/ThankYouPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +47,11 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <CartPage />,
       },
+
+      {
+        path: "/thankyou",
+        element: <ThankYouPage />,
+      },
     ],
   },
 ]);
@@ -57,7 +62,7 @@ root.render(
     domain="dev-jz4jygmjzh67rv48.us.auth0.com"
     clientId="9KfFIq1YCK11kN0orMaibiFaA7eed9KO"
     authorizationParams={{
-      redirect_uri: window.location.origin
+      redirect_uri: window.location.origin,
     }}
   >
     <RouterProvider router={router} />
