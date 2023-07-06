@@ -7,8 +7,6 @@ const CartPage = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
-  console.log(cartItems);
-
   function getSubTotal() {
     const subTotal = cartItems.reduce((total, item) => {
         const itemSubTotal = item.price * item.quantity;
