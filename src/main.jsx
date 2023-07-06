@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 import "./index.css";
 import HomePage from "./pages/HomePage.jsx";
@@ -51,4 +52,14 @@ const router = createBrowserRouter([
 ]);
 
 const root = createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={router} />);
+root.render(
+  <Auth0Provider
+    domain="dev-jz4jygmjzh67rv48.us.auth0.com"
+    clientId="9KfFIq1YCK11kN0orMaibiFaA7eed9KO"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
+    <RouterProvider router={router} />
+  </Auth0Provider>
+);
