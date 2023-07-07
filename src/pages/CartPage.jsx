@@ -1,7 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, clearCart, removeItem } from "../utils/cartSlice";
+import { clearCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
+import CartItem from "../components/CartItem";
+import OrderSummary from "../components/OrderSummary";
 
 const CartPage = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -28,76 +30,25 @@ const CartPage = () => {
       </Link>
     </div>
   ) : (
-    <div className="mt-28 px-44">
-      <div className=" w-[700px] flex items-center justify-between">
-        <h1 className="text-3xl text-black font-bold">Cart</h1>
-        <button
-          className="text-lg font-medium px-2 py-1 rounded-lg text-black bg-blue-400 hover:bg-blue-300 transition-colors duration-300"
-          type="button"
-          onClick={() => dispatch(clearCart())}
-        >
-          Clear Cart
-        </button>
-      </div>
-      <div className="flex justify-between">
-        <div className="mt-8 w-[700px] ">
+    <div className="mt-28 px-4 md:px-28 lg:px-28">
+      <div className="lg:flex justify-between gap-12">
+        <div className="mt-8 lg:flex-1 ">
+          <div className="flex justify-between lg:mb-12">
+            <h1 className="text-2xl md:text-3xl text-black font-bold">Cart</h1>
+            <button
+              className="md:text-lg font-medium px-2 py-2 rounded-lg text-black bg-blue-400 hover:bg-blue-300 transition-colors duration-300"
+              type="button"
+              onClick={() => dispatch(clearCart())}
+            >
+              Clear Cart
+            </button>
+          </div>
           {cartItems.map((item) => (
-            <div key={item.id} className="rounded-md mb-4 ">
-              <div className="flex gap-4 p-2">
-                <img
-                  className="w-36 h-36 rounded-md transition-transform hover:scale-105 cursor-pointer"
-                  src={item.image}
-                  alt="car image"
-                />
-                <div className="flex flex-col justify-between">
-                  <span className="text-xl text-[#393c41] font-bold">
-                    {item.title}
-                  </span>
-                  <p className="text-[#44474c] w-80">{item.description}</p>
-
-                  <div className="flex justify-between items-center  border-[1px] border-[#44474c] w-20 rounded-md text-[#44474c">
-                    <button
-                      className="hover:bg-red-300 w-6 h-6 flex items-center justify-center"
-                      onClick={() => dispatch(removeItem(item))}
-                    >
-                      -
-                    </button>
-                    <span>{item.quantity}</span>
-                    <button
-                      className="hover:bg-green-300 w-6 h-6 flex items-center justify-center"
-                      onClick={() => dispatch(addItem(item))}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-                <span className="ml-32 text-xl text-[#44474c] font-medium block">
-                  ${item.price}
-                </span>
-              </div>
-            </div>
+            <CartItem key={item.id} item={item} />
           ))}
         </div>
-        <div className="shadow-2xl p-8 w-96 h-72 rounded-lg mt-8">
-          <h2 className="text-2xl font-medium">Order Summary</h2>
-          <div className="flex items-center justify-between mt-2">
-            <span>Shipping</span>
-            <span>Free</span>
-          </div>
-          <div className="flex items-center justify-between mt-2">
-            <span>Sales Tax</span>
-            <span>Calculate at checkout</span>
-          </div>
-          <div className="flex items-center justify-between mt-3">
-            <span className="text-xl font-medium">Subtotal</span>
-            <span className="text-xl font-medium">{getSubTotal()}</span>
-          </div>
-          <Link to='/thankyou'>
-            <button className="flex items-center justify-center w-full  mt-7 bg-green-500 hover:bg-green-600 transition-colors duration-300 py-2 rounded-md text-white text-lg">
-              Checkout
-            </button>
-          </Link>
-        </div>
+
+        <OrderSummary />
       </div>
     </div>
   );
