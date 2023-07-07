@@ -13,6 +13,7 @@ const Header = () => {
   const [primaryMobileNavigationRightItems, setMobileNavigationRightItems] =
     useState([]);
   const [primaryMobileNavigationItems, setMobileNavigationItems] = useState([]);
+  const [scrolled, setScrolled] = useState(false);
   const [isCartPage, setIsCartPage] = useState(false);
 
   const cartItems = useSelector((store) => store.cart.items);
@@ -20,6 +21,18 @@ const Header = () => {
   const location = useLocation();
 
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+
+  const handleScroll = () => {
+    const isScrolled = window.scrollY > 0;
+    setScrolled(isScrolled);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     fetchApi();
@@ -49,14 +62,16 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 md:px-9 px-4 bg-transparent font-medium w-full z-50 `}
+      className={`fixed top-0 left-0 right-0 px-2 md:px-9 font-medium w-full z-50 ${
+        scrolled ? "bg-black" : "bg-transparent text-white"
+      } transition-colors duration-300 `}
     >
       <nav className="hidden lg:block mt-4">
         <div className="flex justify-between items-center w-full">
           <Link to="/">
             <img
               className={`w-24 h-14 cursor-pointer ${
-                isCartPage ? "bg-black rounded-lg" : null
+                scrolled ? "bg-black" : " bg-black text-black"
               }`}
               src={logo}
               alt="logo"
@@ -67,8 +82,10 @@ const Header = () => {
               <Link to={item?.href} key={index}>
                 <li
                   className={`cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150 ${
-                    isCartPage ? "text-black hover:text-white" : "text-white"
-                  }`}
+                    isCartPage ? "text-black hover:text-white" : " "
+                  } ${
+                    scrolled ? "text-white hover:bg-white hover:text-black" : ""
+                  } transition-colors duration-300`}
                 >
                   {item?.title}
                 </li>
@@ -83,7 +100,7 @@ const Header = () => {
                 <i
                   className={`fa-solid fa-cart-shopping ${
                     isCartPage ? "text-black" : "text-white"
-                  }`}
+                  } ${scrolled ? "text-white" : ""} `}
                 ></i>
                 <span className=" absolute top-0 right-0 left-5 bg-blue-600 w-4 h-4 rounded-full text-[11px] text-white flex items-center justify-center ">
                   {cartItems.length}
@@ -93,8 +110,10 @@ const Header = () => {
             <Link to="/shop">
               <li
                 className={`cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150 ${
-                  isCartPage ? "text-black hover:text-white" : "text-white"
-                }`}
+                  isCartPage ? "text-black hover:text-white" : " "
+                } ${
+                  scrolled ? "text-white hover:bg-white hover:text-black" : ""
+                } transition-colors duration-300`}
               >
                 Shop
               </li>
@@ -102,7 +121,7 @@ const Header = () => {
             {isAuthenticated ? (
               <li>
                 <button
-                  className="text-white bg-blue-700 p-2 rounded-md hover:bg-blue-500"
+                  className="text-white bg-blue-700 py-1 px-2 rounded-md hover:bg-blue-500"
                   onClick={() => logout({ returnTo: window.location.origin })}
                 >
                   Log Out
@@ -111,7 +130,7 @@ const Header = () => {
             ) : (
               <li>
                 <button
-                  className="text-white bg-blue-700 p-2 rounded-md hover:bg-blue-500"
+                  className="text-white bg-blue-700 py-1 px-2 rounded-md hover:bg-blue-500"
                   onClick={() => loginWithRedirect()}
                 >
                   Log In
@@ -125,13 +144,38 @@ const Header = () => {
       <nav className="block lg:hidden">
         <div className="flex items-center justify-between w-full">
           <Link to="/">
-            <img className="w-24 h-14 cursor-pointer" src={logo} alt="logo" />
+            <img
+              className={`w-24 h-14 cursor-pointer ${
+                scrolled ? "bg-black" : "mt-2 rounded-md bg-black"
+              }`}
+              src={logo}
+              alt="logo"
+            />
           </Link>
-          <div
-            className="cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150"
-            onClick={toggleSideBar}
-          >
-            {primaryMobileNavigationRightItems}
+          
+          <div className="flex gap-3 items-center">
+            <Link to="/cart">
+              <li className=" relative cursor-pointer py-1 px-2 rounded transition-all ease-in delay-150">
+                <i
+                  className={`fa-solid fa-cart-shopping ${
+                    isCartPage ? "text-black" : "text-white"
+                  } ${scrolled ? "text-white" : "text-black"} `}
+                ></i>
+                <span className="absolute top-0 right-0 bg-blue-600 w-4 h-4 rounded-full text-[11px] text-white flex items-center justify-center ">
+                  {cartItems.length}
+                </span>
+              </li>
+            </Link>
+            <div
+              className={`cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150 ${
+                scrolled
+                  ? "bg-black text-white hover:bg-white hover:text-black"
+                  : "bg-transparent text-black hover:text-white"
+              } transition-colors duration-300`}
+              onClick={toggleSideBar}
+            >
+              {primaryMobileNavigationRightItems}
+            </div>
           </div>
         </div>
       </nav>
