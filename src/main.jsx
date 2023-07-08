@@ -13,6 +13,7 @@ import ModelYPage from "./pages/ModelYPage.jsx";
 import ShopPage from "./pages/ShopPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import ThankYouPage from "./components/ThankYouPage.jsx";
+import DrivePage from "./pages/DrivePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,10 +48,13 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <CartPage />,
       },
-
       {
         path: "/thankyou",
         element: <ThankYouPage />,
+      },
+      {
+        path: "/drive",
+        element: <DrivePage />,
       },
     ],
   },
