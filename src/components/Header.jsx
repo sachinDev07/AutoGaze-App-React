@@ -15,6 +15,7 @@ const Header = () => {
   const [primaryMobileNavigationItems, setMobileNavigationItems] = useState([]);
   const [scrolled, setScrolled] = useState(false);
   const [isCartPage, setIsCartPage] = useState(false);
+  const [isDrivePage, setIsDrivePage] = useState(false);
 
   const cartItems = useSelector((store) => store.cart.items);
 
@@ -54,6 +55,7 @@ const Header = () => {
 
   useEffect(() => {
     setIsCartPage(location.pathname === "/cart");
+    setIsDrivePage(location.pathname === "/drive");
   }, [location]);
 
   const toggleSideBar = () => {
@@ -64,14 +66,14 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 px-2 md:px-9 font-medium w-full z-50 ${
         scrolled ? "bg-black" : "bg-transparent text-white"
-      } transition-colors duration-300 `}
+      } ${isDrivePage ? "!bg-black" : ""} transition-colors duration-300 `}
     >
-      <nav className="hidden lg:block mt-4">
+      <nav className="hidden lg:block py-2">
         <div className="flex justify-between items-center w-full">
           <Link to="/">
             <img
               className={`w-24 h-14 cursor-pointer ${
-                scrolled ? "bg-black" : " bg-black text-black"
+                scrolled ? "" : " bg-transparent text-black"
               }`}
               src={logo}
               alt="logo"
@@ -141,24 +143,37 @@ const Header = () => {
         </div>
       </nav>
 
-      <nav className="block lg:hidden">
+      <nav className="block lg:hidden mt-2">
         <div className="flex items-center justify-between w-full">
-          <Link to="/">
-            <img
-              className={`w-24 h-14 cursor-pointer ${
-                scrolled ? "bg-black" : "mt-2 rounded-md bg-black"
+          <div className="flex gap-2 items-center">
+            <Link to="/">
+              <img
+                className={`w-24 h-14 cursor-pointer ${
+                isCartPage && !scrolled
+                  ? "bg-black hover:text-white"
+                  : ""
               }`}
-              src={logo}
-              alt="logo"
-            />
-          </Link>
-          
+                src={logo}
+                alt="logo"
+              />
+            </Link>
+            <Link to="/shop">
+              <li className={`cursor-pointer py-1 px-3  rounded ease-in  transition-colors duration-150 hover:bg-black ${
+                isCartPage && !scrolled
+                  ? "text-black hover:text-white"
+                  : "text-white"
+              }`}>
+                Shop
+              </li>
+            </Link>
+          </div>
+
           <div className="flex gap-3 items-center">
             <Link to="/cart">
               <li className=" relative cursor-pointer py-1 px-2 rounded transition-all ease-in delay-150">
                 <i
                   className={`fa-solid fa-cart-shopping ${
-                    isCartPage ? "text-black" : "text-white"
+                    isCartPage && !scrolled ? "text-black" : "text-white"
                   } ${scrolled ? "text-white" : "text-black"} `}
                 ></i>
                 <span className="absolute top-0 right-0 bg-blue-600 w-4 h-4 rounded-full text-[11px] text-white flex items-center justify-center ">
@@ -167,10 +182,10 @@ const Header = () => {
               </li>
             </Link>
             <div
-              className={`cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150 ${
-                scrolled
-                  ? "bg-black text-white hover:bg-white hover:text-black"
-                  : "bg-transparent text-black hover:text-white"
+              className={`cursor-pointer py-1 px-2  hover:bg-[#242123] rounded transition-all ease-in delay-150  ${
+                isCartPage && !scrolled
+                  ? "text-black hover:text-white"
+                  : "text-white"
               } transition-colors duration-300`}
               onClick={toggleSideBar}
             >
