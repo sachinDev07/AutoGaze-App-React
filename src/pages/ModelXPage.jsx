@@ -27,6 +27,7 @@ const ModelXPage = () => {
       console.error("Autoplay was blocked:", error);
     });
   }, []);
+  
   return (
     <div className="bg-black">
       <ImageBackground
@@ -50,17 +51,17 @@ const ModelXPage = () => {
       <video
         ref={videoRef}
         playsInline
-        className="w-full md:object-cover pb-20 md:pb-20 md:px-28 lg:px-32 lg:py-16 "
+        className="w-full md:object-cover pb-20 md:pb-20 md:px-28 lg:p-32 lg:py-16 "
       >
         <source src={MODEL_S_VIDEO_SOURCE} />
       </video>
 
       <div className="md:flex md:items-center md:justify-center md:pb-12 lg:p-32">
-        <div className="grid grid-cols-1 grid-rows-1 pb-8 md:p-4 md:grid-cols-2 md:grid-rows-2 md:gap-6 lg:gap-8">
-          <div className="col-start-1 col-end-1 row-start-1 row-end-2">
+        <div className="grid grid-cols-1 grid-rows-4 pb-4 md:p-4 md:grid-cols-2 md:grid-rows-2 md:gap-6 lg:gap-8">
+          <div className="col-start-1 col-end-1">
             <img className="w-full h-full" src={ModelX_img} alt="image" />
           </div>
-          <div className="p-8 md:px-0 col-start-2 col-end-2 flex flex-col justify-center">
+          <div className="p-8 md:px-0 md:col-start-2 md:col-end-3 flex flex-col justify-center">
             <span className="text-white mb-2 block font-medium">
               Stay Connected
             </span>

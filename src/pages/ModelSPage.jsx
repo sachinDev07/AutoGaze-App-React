@@ -56,22 +56,22 @@ const ModelSPage = () => {
       </video>
 
       <div className="md:flex md:items-center md:justify-center md:pb-12 lg:p-32">
-        <div className="grid grid-cols-1 grid-rows-1 pb-8 md:p-4 md:grid-cols-2 md:grid-rows-2 md:gap-6">
-          <div className="col-start-1 col-end-1 row-start-1 row-end-2">
+        <div className="grid grid-cols-1 grid-rows-4 pb-4 md:p-4 md:grid-cols-2 md:grid-rows-2 md:gap-6 lg:gap-8">
+          <div className="col-start-1 col-end-2">
             <img
               className="w-full h-full"
               src={MODEL_S_IMAGE_SOURCE}
               alt="image"
             />
           </div>
-          <div className="p-8 md:px-0 col-start-2 col-end-2">
+          <div className="p-8 md:px-0 md:col-start-2 md:col-end-3 flex flex-col justify-center">
             <span className="text-white mb-2 block font-medium">Stay Connected</span>
             <p className="text-gray-300">
               Instantly connect with multi-device Bluetooth, or fast charge
               devices with wireless and 36-watt USB-C charging.
             </p>
           </div>
-          <div className="p-8 md:px-0">
+          <div className="p-8 md:px-0 flex flex-col justify-center">
             <span className="text-white mb-2 block font-medium">Immersive Sound</span>
             <p className="text-gray-300">
               A 22-speaker, 960-watt audio system with Active Road Noise
