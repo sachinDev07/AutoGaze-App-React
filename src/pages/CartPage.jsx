@@ -9,15 +9,6 @@ const CartPage = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
-  function getSubTotal() {
-    const subTotal = cartItems.reduce((total, item) => {
-      const itemSubTotal = item.price * item.quantity;
-      return total + itemSubTotal;
-    }, 0);
-
-    return subTotal / 100;
-  }
-
   return cartItems.length === 0 ? (
     <div className="flex flex-col items-center justify-center w-full h-screen">
       <h1 className="text-black text-medium text-3xl">
