@@ -25,9 +25,11 @@ const VideoBackground = ({ videoSource, title, description, features }) => {
       <div className="absolute inset-0 flex flex-col items-center top-[20%]">
         <h1 className="text-white font-medium text-4xl md:text-5xl">{title}</h1>
         <Link>
-          <span className="text-white text-sm font-medium border-b-2 inline-block mt-1 md:mt-3">
-            {description}
-          </span>
+          <Link to="/drive">
+            <span className="text-white text-sm font-medium border-b-2 inline-block mt-1 md:mt-3">
+              {description}
+            </span>
+          </Link>
         </Link>
       </div>
 
@@ -50,20 +52,24 @@ const VideoBackground = ({ videoSource, title, description, features }) => {
 
       <div className="absolute inset-0 flex flex-col items-center top-[77%] md:top-[75%] lg:top-[80%] text-white text-xl md:text-3xl font-medium">
         <div className="mt-5 flex flex-col md:flex-row text-center md:mt-12">
-          <button
-            type="button"
-            className="rounded-md border-2 bg-white  border-white px-20 md:px-12 lg:px-20 py-2 font-semibold text-base shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black hover:bg-transparent hover:text-white transition-colors duration-200 ease-in-out mt-4 md:ml-4 md:mb-8 text-black"
-          >
-            Demo Drive
-          </button>
-
-          {features.length && (
+          <Link to="/drive">
             <button
               type="button"
-              className="rounded-md border-2 bg-white  border-white px-20 md:px-12 lg:px-20 py-2 font-semibold text-base shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black hover:bg-transparent hover:text-white transition-colors duration-200 ease-in-out mt-4 md:ml-4 mb-8 text-black"
+              className="rounded-md border-2 bg-white  border-white px-20 md:px-12 lg:px-20 py-2 font-semibold text-base shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black hover:bg-transparent hover:text-white transition-colors duration-200 ease-in-out mt-4 md:ml-4 md:mb-8 text-black"
             >
               Demo Drive
             </button>
+          </Link>
+
+          {features.length && (
+            <Link to="/shop">
+              <button
+                type="button"
+                className="rounded-md border-2 bg-white  border-white px-20 md:px-12 lg:px-20 py-2 font-semibold text-base shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black hover:bg-transparent hover:text-white transition-colors duration-200 ease-in-out mt-4 md:ml-4 mb-8 text-black"
+              >
+                Order Now
+              </button>
+            </Link>
           )}
         </div>
       </div>
