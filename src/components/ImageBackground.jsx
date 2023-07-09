@@ -49,7 +49,7 @@ const ImageBackground = ({
           <Link to="/drive">
             <button
               type="button"
-              className="rounded-md bg-white px-16 md:px-12 lg:px-20 py-2 font-semibold text-black text-base shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black delay-200 ease-in-out mt-4 lg:mr-5 hover:bg-black hover:text-white transition-colors duration-300"
+              className="rounded-md bg-white px-12 md:px-12 lg:px-20 py-2 font-semibold text-black text-base shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black delay-200 ease-in-out mt-4 lg:mr-5 hover:bg-black hover:text-white transition-colors duration-300"
             >
               Explore Inventory
             </button>
@@ -57,7 +57,7 @@ const ImageBackground = ({
           <Link to="/shop">
             <button
               type="button"
-              className="rounded-md bg-black px-16 md:px-12 lg:px-20 py-2 font-semibold text-white text-base shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black hover:bg-white hover:text-black ease-in-out mt-4 transition-colors duration-300"
+              className="rounded-md bg-black px-16  md:px-12 lg:px-20 py-2 font-semibold text-white text-base shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black hover:bg-white hover:text-black ease-in-out mt-4 transition-colors duration-300"
             >
               Custom Order
             </button>

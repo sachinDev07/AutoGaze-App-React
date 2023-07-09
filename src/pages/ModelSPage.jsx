@@ -37,7 +37,7 @@ const ModelSPage = () => {
         features={features}
       />
       <div className="relative bg-black mb-16">
-        <h1 className="absolute left-1/2 transform -translate-x-1/2 top-[15%]  text-2xl text-white flex-nowrap font-bold ">
+        <h1 className="absolute left-1/2 transform -translate-x-1/2 top-[15%] text-xl  md:text-2xl text-white flex-nowrap font-bold ">
           Interior of the Future
         </h1>
         <img

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ThankYouPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-400">
       <div className="max-w-md px-8 py-12 bg-white shadow-lg rounded-lg">
         <h2 className="text-3xl font-semibold text-gray-800 mb-6">
           Thank You for Your Order!

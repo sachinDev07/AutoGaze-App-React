@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SideBar = ({ primaryMobileNavigationItems, isOpen, onClose }) => {
-  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   return (
     <aside
@@ -24,7 +24,7 @@ const SideBar = ({ primaryMobileNavigationItems, isOpen, onClose }) => {
         <ul className="mt-24">
           {primaryMobileNavigationItems?.slice(0, 4)?.map((item, index) => (
             <Link to={item?.href} key={index}>
-              <li className="ml-10 hover:bg-slate-200 p-2 w-44 rounded-md text-black mb-5">
+              <li className="ml-10 hover:bg-slate-200 p-2 w-44 rounded-md text-black mb-5"  onClick={onClose}>
                 {item?.title}
               </li>
             </Link>

@@ -22,8 +22,8 @@ const DrivePage = () => {
   };
 
   return (
-    <div className={`flex flex-col px-8 h-screen py-36 lg:px-44 &{l} `}>
-      <h1 className="text-black text-3xl font-medium md:text-5xl">
+    <div className={`flex flex-col px-4 md:px-8 h-screen py-36 lg:px-44 &{l} `}>
+      <h1 className="text-black text-2xl font-medium md:text-5xl">
         Schedule a Demo Drive
       </h1>
       <p className="mt-3 text-gray-500">
@@ -38,7 +38,7 @@ const DrivePage = () => {
           {cars.map((car) => (
             <button
               key={car.id}
-              className={`border-2 border-gray-400 px-4 py-2 md:px-8  rounded-md md:whitespace-nowrap text-gray-700 font-medium focus:border-blue-600 focus:border-2 ${
+              className={`border-2 border-gray-400 px-2 py-2 md:px-8  rounded-md md:whitespace-nowrap text-gray-700 font-medium focus:border-blue-600 focus:border-2 ${
                 car.id === 1 && active ? "border-blue-500 border-4" : ""
               } focus:border-blue-500 focus:border-4`}
               onClick={() => handleButton(car.image)}
