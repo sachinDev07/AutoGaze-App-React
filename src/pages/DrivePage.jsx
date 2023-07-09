@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { cars } from "../utils/helper";
+import Img from "../components/Img";
 
 const DrivePage = () => {
   const [selectedImage, setSelectedImage] = useState(cars[0].image);
@@ -32,7 +33,7 @@ const DrivePage = () => {
       </p>
       <div className="flex flex-col md:flex-row-reverse gap-4 md:gap-20 md:mt-10 ">
         <div>
-          <img className="lg:w-[80%] lg:ml-28" src={selectedImage} alt="car" />
+          <Img className="lg:w-[80%] lg:ml-28" src={selectedImage} alt="car" />
         </div>
         <div className="flex items-center justify-evenly md:flex-col ">
           {cars.map((car) => (

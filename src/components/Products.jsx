@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 import { products } from "../utils/helper.js";
+import Img from "./Img";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -16,10 +17,6 @@ const Products = () => {
     }, 2000); // Hide the toast after 2 seconds
     dispatch(addItem(item));
 
-    const toastStyle = {
-      opacity: selectedProduct ? 1 : 0,
-      pointerEvents: selectedProduct ? "auto" : "none",
-    };
   };
 
   return (
@@ -30,7 +27,7 @@ const Products = () => {
           className="relative w-80 h-[480px] lg:w-72 lg:mb-8 p-4 border-white border-[1px] rounded-md  text-center text-white"
         >
           <div className="w-72 lg:w-64 h-48">
-            <img
+            <Img
               className="w-full h-full object-center rounded-md transition-transform hover:scale-105 cursor-pointer"
               src={item.image}
               alt="car image"

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Img from "./Img";
 
 const ImageBackground = ({
   backgroundImage,
@@ -10,7 +11,7 @@ const ImageBackground = ({
 }) => {
   return (
     <div className={`relative z-0`}>
-      <img
+      <Img
         className="h-screen object-cover w-full"
         src={backgroundImage}
         alt="Model-3 image"

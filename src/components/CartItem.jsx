@@ -2,13 +2,14 @@ import React from "react";
 
 import { addItem, removeItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
+import Img from "./Img";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   return (
     <div className="rounded-md mb-4 mt-8 md:mb-8 w-full md:mt-8">
       <div className="flex gap-4">
-        <img
+        <Img
           className="w-36 h-36 rounded-md transition-transform hover:scale-105 cursor-pointer"
           src={item.image}
           alt="car image"

@@ -4,6 +4,7 @@ import VideoBackground from "../components/VideoBackground";
 import { MAIN_HERO_MODEL_Y } from "../utils/constant";
 import modelsImage from "../assets/model-3.avif";
 import modelY from "../assets/Model-Y.avif";
+import Img from "../components/Img";
 
 const features = [
   { title: "70 cu ft.", description: "Cargo Space" },
@@ -22,7 +23,7 @@ const ModelYPage = () => {
       />
 
       <div className="md:px-4 w-full md:h-[600px] ">
-        <img
+        <Img
           className="w-full h-full object-cover "
           src={modelsImage}
           alt="car image"
@@ -56,7 +57,7 @@ const ModelYPage = () => {
       </div>
 
       <div className="w-full h-[600px] relative">
-        <img
+        <Img
           className="w-full h-full object-cover md:object-center"
           src={modelY}
           alt="map-image"

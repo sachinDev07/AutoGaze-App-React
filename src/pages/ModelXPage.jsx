@@ -8,6 +8,7 @@ import {
 import ImageBackground from "../components/ImageBackground";
 import ModelX_img from "../assets/MX-Interior.avif";
 import ModelX_img2 from "../assets/MX-Interior2.avif";
+import Img from "../components/Img";
 
 const features = [
   { title: "333mi", description: "Range (EPA est.)" },
@@ -41,7 +42,7 @@ const ModelXPage = () => {
         <h1 className="absolute left-1/2 transform -translate-x-1/2 top-[15%] text-xl md:text-2xl text-white flex-nowrap font-bold ">
           Interior of the Future
         </h1>
-        <img
+        <Img
           className="object-cover w-screen h-screen"
           src={IMAGE_MODEL_S}
           alt="Model S"
@@ -79,7 +80,7 @@ const ModelXPage = () => {
             </p>
           </div>
           <div className="row-start-3 md:col-start-2 md:row-start-2">
-              <img className="w-full h-full" src={ModelX_img2} alt="" />
+              <Img className="w-full h-full" src={ModelX_img2} alt="" />
             </div>
         </div>
       </div>

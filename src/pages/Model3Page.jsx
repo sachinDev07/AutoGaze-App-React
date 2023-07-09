@@ -4,6 +4,7 @@ import VideoBackground from "../components/VideoBackground";
 import { MAIN_HERO_MODEL_3 } from "../utils/constant";
 import modelsImage from "../assets/model-3.avif";
 import modelsRange from "../assets/Model-3-Range-NA.avif";
+import Img from "../components/Img";
 
 const features = [
   { title: "3.1s", description: "0-60 mph" },
@@ -22,7 +23,7 @@ const Model3Page = () => {
       />
 
       <div className="md:px-4 w-full md:h-[600px]">
-        <img
+        <Img
           className="w-full h-full object-cover "
           src={modelsImage}
           alt="car image"
@@ -56,7 +57,7 @@ const Model3Page = () => {
       </div>
 
       <div className="w-full h-[600px] relative lg:h-[500px]">
-        <img
+        <Img
           className="w-full h-full object-cover md:object-center"
           src={modelsRange}
           alt="map image"

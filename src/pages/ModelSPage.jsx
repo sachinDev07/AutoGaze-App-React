@@ -8,6 +8,7 @@ import {
   MODEL_S_VIDEO_SOURCE,
   MODEL_S_VIDEO_SOURCE2,
 } from "../utils/constant";
+import Img from "../components/Img";
 
 const features = [
   { title: "396mi", description: "Range (EPA est.)" },
@@ -40,7 +41,7 @@ const ModelSPage = () => {
         <h1 className="absolute left-1/2 transform -translate-x-1/2 top-[15%] text-xl  md:text-2xl text-white flex-nowrap font-bold ">
           Interior of the Future
         </h1>
-        <img
+        <Img
           className="md:object-cover w-screen h-screen"
           src={IMAGE_MODEL_S}
           alt="Model S"
@@ -58,7 +59,7 @@ const ModelSPage = () => {
       <div className="md:flex md:items-center md:justify-center md:pb-12 lg:p-32">
         <div className="grid grid-cols-1 grid-rows-4 pb-4 md:p-4 md:grid-cols-2 md:grid-rows-2 md:gap-6 lg:gap-8">
           <div className="col-start-1 col-end-2">
-            <img
+            <Img
               className="w-full h-full"
               src={MODEL_S_IMAGE_SOURCE}
               alt="image"
