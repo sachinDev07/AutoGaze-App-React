@@ -23,7 +23,7 @@ const ModelYPage = () => {
       />
 
       <div className="md:px-4 w-full md:h-[600px] ">
-        <Img
+        <img
           className="w-full h-full object-cover "
           src={modelsImage}
           alt="car image"
@@ -57,7 +57,7 @@ const ModelYPage = () => {
       </div>
 
       <div className="w-full h-[600px] relative">
-        <Img
+        <img
           className="w-full h-full object-cover md:object-center"
           src={modelY}
           alt="map-image"

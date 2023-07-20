@@ -27,7 +27,7 @@ const Products = () => {
           className="relative w-80 h-[480px] lg:w-72 lg:mb-8 p-4 border-white border-[1px] rounded-md  text-center text-white"
         >
           <div className="w-72 lg:w-64 h-48">
-            <Img
+            <img
               className="w-full h-full object-center rounded-md transition-transform hover:scale-105 cursor-pointer"
               src={item.image}
               alt="car image"

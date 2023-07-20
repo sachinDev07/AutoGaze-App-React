@@ -23,7 +23,7 @@ const Model3Page = () => {
       />
 
       <div className="md:px-4 w-full md:h-[600px]">
-        <Img
+        <img
           className="w-full h-full object-cover "
           src={modelsImage}
           alt="car image"
@@ -57,7 +57,7 @@ const Model3Page = () => {
       </div>
 
       <div className="w-full h-[600px] relative lg:h-[500px]">
-        <Img
+        <img
           className="w-full h-full object-cover md:object-center"
           src={modelsRange}
           alt="map image"

@@ -11,7 +11,7 @@ const ImageBackground = ({
 }) => {
   return (
     <div className={`relative z-0`}>
-      <Img
+      <img
         className="h-screen object-cover w-full"
         src={backgroundImage}
         alt="Model-3 image"
