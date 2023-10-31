@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-const VideoBackground = ({ videoSource, title, description, features }) => {
+const VideoBackground = ({ videoSource, description, features }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const VideoBackground = ({ videoSource, title, description, features }) => {
     video.muted = true;
     video.loop = true;
     video.play().catch((error) => {
-      console.error("Autoplay was blocked:", error);
+      // console.error("Autoplay was blocked:", error);
     });
   }, []);
 
@@ -23,7 +23,9 @@ const VideoBackground = ({ videoSource, title, description, features }) => {
         <source src={videoSource} />
       </video>
       <div className="absolute inset-0 flex flex-col items-center top-[20%]">
-        <h1 className="text-white font-medium text-4xl md:text-5xl">{title}</h1>
+        <h1 className="text-white font-medium text-4xl md:text-5xl">
+          Experience Drive
+        </h1>
         <Link>
           <Link to="/drive">
             <span className="text-white text-sm font-medium border-b-2 inline-block mt-1 md:mt-3">

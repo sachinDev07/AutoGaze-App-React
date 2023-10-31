@@ -68,16 +68,15 @@ const Header = () => {
         scrolled ? "bg-black" : "bg-transparent text-white"
       } ${isDrivePage ? "!bg-black" : ""} transition-colors duration-300 `}
     >
-      <nav className="hidden lg:block py-2">
+      <nav className="hidden lg:block py-4">
         <div className="flex justify-between items-center w-full">
-          <Link to="/">
-            <img
-              className={`w-24 h-14 cursor-pointer ${
-                scrolled ? "" : " bg-transparent text-black"
-              }`}
-              src={logo}
-              alt="logo"
-            />
+          <Link
+            to="/"
+            className={`${isCartPage ? "text-black" : " "} ${
+              scrolled ? "text-white" : ""
+            } text-2xl font-bold mt-2 hover:scale-105 transition-colors duration-300`}
+          >
+            AutoGaze
           </Link>
           <ul className="flex item-center gap-6 lg:gap-1 xl:gap-6">
             {primaryNavigationItems?.slice(0, 4).map((item, index) => (
@@ -149,20 +148,20 @@ const Header = () => {
             <Link to="/">
               <img
                 className={`w-24 h-14 cursor-pointer ${
-                isCartPage && !scrolled
-                  ? "bg-black hover:text-white"
-                  : ""
-              }`}
+                  isCartPage && !scrolled ? "bg-black hover:text-white" : ""
+                }`}
                 src={logo}
                 alt="logo"
               />
             </Link>
             <Link to="/shop">
-              <li className={`cursor-pointer py-1 px-3  rounded ease-in  transition-colors duration-150 hover:bg-black ${
-                isCartPage && !scrolled
-                  ? "text-black hover:text-white"
-                  : "text-white"
-              }`}>
+              <li
+                className={`cursor-pointer py-1 px-3  rounded ease-in  transition-colors duration-150 hover:bg-black ${
+                  isCartPage && !scrolled
+                    ? "text-black hover:text-white"
+                    : "text-white"
+                }`}
+              >
                 Shop
               </li>
             </Link>
