@@ -74,7 +74,7 @@ const Header = () => {
             to="/"
             className={`${isCartPage ? "text-black" : " "} ${
               scrolled ? "text-white" : ""
-            } text-2xl font-bold mt-2 hover:scale-105 transition-colors duration-300`}
+            } text-xl font-bold hover:scale-105 transition-colors duration-300`}
           >
             AutoGaze
           </Link>
